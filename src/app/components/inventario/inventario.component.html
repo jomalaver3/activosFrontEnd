@@ -1,0 +1,25 @@
+<div class="inventario-container">
+    <h2>Movimientos de Productos</h2>
+    <table mat-table [dataSource]="productos" class="mat-elevation-z8">
+      <ng-container matColumnDef="nombre">
+        <th mat-header-cell *matHeaderCellDef> Nombre </th>
+        <td mat-cell *matCellDef="let producto"> {{ producto.nombre }} </td>
+      </ng-container>
+  
+      <ng-container matColumnDef="stock">
+        <th mat-header-cell *matHeaderCellDef> Stock </th>
+        <td mat-cell *matCellDef="let producto"> {{ producto.stock }} </td>
+      </ng-container>
+  
+      <ng-container matColumnDef="acciones">
+        <th mat-header-cell *matHeaderCellDef> Acciones </th>
+        <td mat-cell *matCellDef="let producto">
+          <button mat-button color="primary" (click)="registrarMovimiento(producto.id, 'Entrada')">Entrada</button>
+          <button mat-button color="warn" (click)="registrarMovimiento(producto.id, 'Salida')">Salida</button>
+        </td>
+      </ng-container>
+  
+      <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
+      <tr mat-row *matRowDef="let row; columns: displayedColumns;"></tr>
+    </table>
+  </div>
